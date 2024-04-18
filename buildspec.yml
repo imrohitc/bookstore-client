@@ -12,17 +12,14 @@ phases:
   install:
     runtime-versions:
       nodejs: 21
-
     commands:
       - npm install
-
   build:
     commands:
       - echo Build started on 'date'
       - echo Building docker image
       - docker build -t $REPOSITORY_URI:latest .
       - docker tag $REPOSITORY_URI:latest $REPOSITORY_URI:$IMAGE_TAG
-
   post_build:
     commands:
       - echo Build completed on 'date'
@@ -35,9 +32,9 @@ phases:
       - echo Printing imagedefinations.json
       - cat imagedefinations.json
 
-  artifacts:
-    files:
-      - public/*
-      - src/**/*
-      - package.json
-      - imagedefinations.json
+artifacts:
+  files:
+    - public/*
+    - src/**/*
+    - package.json
+    - imagedefinations.json

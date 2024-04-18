@@ -13,8 +13,8 @@ phases:
     runtime-versions:
       nodejs: 21
 
-      commands:
-        - npm install
+    commands:
+      - npm install
 
   build:
     commands:

@@ -12,17 +12,21 @@ phases:
   install:
     runtime-versions:
       nodejs: 21
+<<<<<<< HEAD
 
       commands:
         - npm install
 
+=======
+    commands:
+      - npm install
+>>>>>>> 475bbf531b755b3ec94555d8830545b38e6d1571
   build:
     commands:
       - echo Build started on 'date'
       - echo Building docker image
       - docker build -t $REPOSITORY_URI:latest .
       - docker tag $REPOSITORY_URI:latest $REPOSITORY_URI:$IMAGE_TAG
-
   post_build:
     commands:
       - echo Build completed on 'date'
@@ -30,15 +34,14 @@ phases:
       - docker push $REPOSITORY_URI:latest
       - docker push $REPOSITORY_URI:$IMAGE_TAG
       - echo Writing image defination file
-
       - DOCKER_CONTAINER_NAME=rohitchavan-bookstore-container
       - printf '[{"name":"%s","imageUri":"%s"}]' $DOCKER_CONTAINER_NAME $REPOSITORY_URI:$IMAGE_TAG > imagedefinations.json
       - echo Printing imagedefinations.json
       - cat imagedefinations.json
 
-  artifacts:
-    files:
-      - public/*
-      - src/**/*
-      - package.json
-      - imagedefinations.json
+artifacts:
+  files:
+    - public/*
+    - src/**/*
+    - package.json
+    - imagedefinations.json

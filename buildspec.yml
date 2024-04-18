@@ -12,15 +12,8 @@ phases:
   install:
     runtime-versions:
       nodejs: 21
-<<<<<<< HEAD
-
-      commands:
-        - npm install
-
-=======
     commands:
       - npm install
->>>>>>> 475bbf531b755b3ec94555d8830545b38e6d1571
   build:
     commands:
       - echo Build started on 'date'

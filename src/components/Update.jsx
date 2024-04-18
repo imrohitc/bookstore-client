@@ -25,7 +25,7 @@ const Update = () => {
     e.preventDefault();
 
     try {
-      await axios.put(`http://localhost:8800/books/${bookId}`, book);
+      await axios.put(`http://rohitchavan-bookstore-lb-1396644598.us-east-1.elb.amazonaws.com/books/${bookId}`, book);
       navigate("/");
     } catch (err) {
       console.log(err);

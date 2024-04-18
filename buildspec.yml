@@ -3,7 +3,7 @@ version: 0.2
 phases:
   pre_build:
     commands:
-      - echo "Logging in to AWS ECR"
+      - echo Logging in to AWS ECR
       - aws --version
       - aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 654654168428.dkr.ecr.us-east-1.amazonaws.com
       - REPOSITORY_URI=654654168428.dkr.ecr.us-east-1.amazonaws.com/rohitchavan-bookstore-client
@@ -14,27 +14,25 @@ phases:
       nodejs: 21
 
       commands:
-        - echo "Installing dependencies"
         - npm install
 
   build:
     commands:
-      - echo "Build started on '$(date)'"
-      - echo "Building docker image"
+      - echo Build started on 'date'
+      - echo Building docker image
       - docker build -t $REPOSITORY_URI:latest .
       - docker tag $REPOSITORY_URI:latest $REPOSITORY_URI:$IMAGE_TAG
 
   post_build:
     commands:
-      - echo "Build completed on '$(date)'"
-      - echo "pushing to $REPOSITORY_URI"
+      - echo Build completed on 'date'
+      - echo pushing to REPOSITORY_URI
       - docker push $REPOSITORY_URI:latest
       - docker push $REPOSITORY_URI:$IMAGE_TAG
-      - echo "Writing image defination file"
-
+      - echo Writing image defination file
       - DOCKER_CONTAINER_NAME=rohitchavan-bookstore-container
       - printf '[{"name":"%s","imageUri":"%s"}]' $DOCKER_CONTAINER_NAME $REPOSITORY_URI:$IMAGE_TAG > imagedefinations.json
-      - echo "Printing imagedefinations.json"
+      - echo Printing imagedefinations.json
       - cat imagedefinations.json
 
   artifacts:

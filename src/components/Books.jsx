@@ -14,7 +14,7 @@ const Books = () => {
   useEffect(() => {
     const fetchAllBooks = async () => {
       try {
-        const res = await axios.get("http://rohitchavan-bookstore-backend-lb-348951761.us-east-1.elb.amazonaws.com/books");
+        const res = await axios.get("http://rohitchavan-bookstore-backend-lb-805925953.us-east-1.elb.amazonaws.com/books");
         setBooks(res.data);
       } catch (err) {
         console.log(err);
@@ -28,7 +28,7 @@ const Books = () => {
   const handleDelete = async (id) => {
     if(checkStatus()) {
       try {
-        await axios.delete(`http://rohitchavan-bookstore-backend-lb-348951761.us-east-1.elb.amazonaws.com/books/${id}`);
+        await axios.delete(`http://rohitchavan-bookstore-backend-lb-805925953.us-east-1.elb.amazonaws.com/books/${id}`);
         window.location.reload();
       } catch (err) {
         console.log(err);

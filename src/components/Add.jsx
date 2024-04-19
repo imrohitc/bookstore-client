@@ -22,7 +22,7 @@ const Add = () => {
   const handleClick = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://rohitchavan-bookstore-backend-lb-805925953.us-east-1.elb.amazonaws.com/books", book);
+      await axios.post("http://localhost:8800/books", book);
       navigate("/");
     } catch (err) {
       console.log(err);
